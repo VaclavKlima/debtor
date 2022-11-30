@@ -11,4 +11,3 @@ return [
     'logout' => 'Log Out',
     'dashboard' => 'Dashboard',
 ];
-ł
