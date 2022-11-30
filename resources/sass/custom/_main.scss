@@ -11,3 +11,9 @@
 // For example you can create _component1.scss and include it as follows:
 // @import 'component1';
 
+span.debtor-logo {
+    content: '';
+    background-image: url("/media/favicons/coin64x64.png");
+    height: 20px;
+    width: 20px;
+}
