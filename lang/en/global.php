@@ -10,4 +10,5 @@ return [
     'please_login' => ' Welcome, please login.',
     'logout' => 'Log Out',
     'dashboard' => 'Dashboard',
+    'page_of' => 'Page :current_page of :last_page',
 ];
