@@ -47,7 +47,8 @@
                 @role('admin')
                 <li class="nav-main-heading">Administration</li>
 
-                <x-layouts.backend.sidebar-link-group :title="trans('usersManagement/users.users_management')" :is-active="request()->is('users-management*')" icon="fas fa-users-cog">
+                <x-layouts.backend.sidebar-link-group :title="trans('usersManagement/users.users_management')"
+                                                      :is-active="request()->is('users-management*')" icon="fas fa-users-cog">
 
                     <x-layouts.backend.sidebar-link :title="trans('usersManagement/users.users')" icon="fa-solid fa-users"
                                                     :is-active="request()->is('users*')"
@@ -58,7 +59,6 @@
                                                     :url="route('users_management.roles.index')"/>
 
                 </x-layouts.backend.sidebar-link-group>
-
 
                 @endrole
             </ul>

@@ -15,6 +15,7 @@ trait WithDataTablesTrait
     public int $perPage = 10;
     public array $getColumns = ['*'];
     public string $pageName = 'page';
+    public array $search = [];
 
     public function mountWithDataTablesTrait(): void
     {

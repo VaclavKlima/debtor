@@ -7,10 +7,14 @@
                 <img src="{{ asset('media/favicons/coin64x64.png') }}" alt="Debtor logo">
             </p>
             <h1 class="fw-bold mb-2">
-                {{ trans('global.sign_in') }}
+                @lang('global.sign_in')
+
+
             </h1>
             <p class="fw-medium text-muted">
-                {{ trans('global.please_login') }}
+                @lang('global.please_login')
+
+
             </p>
         </div>
         <div class="row g-0 justify-content-center">
@@ -25,12 +29,16 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
                         <a class="text-muted fs-sm fw-medium d-block d-lg-inline-block mb-1" href="{{ route('password.request') }}">
-                            {{ trans('global.forgot_password') }}
+                            @lang('global.forgot_password')
+
+
                         </a>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-lg btn-alt-primary">
-                            <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> {{ trans('global.sign_in') }}
+                            <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> @lang('global.sign_in')
+
+
                         </button>
                     </div>
                 </div>

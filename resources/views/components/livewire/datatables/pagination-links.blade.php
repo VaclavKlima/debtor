@@ -13,7 +13,7 @@
         </div>
 
         <div class="ms-2 mt-1">
-            {{ trans('global.page_of', ['current_page' => $collection->currentPage(), 'last_page' => $collection->lastPage()]) }}
+            @lang('global.page_of', ['current_page' => $collection->currentPage(), 'last_page' => $collection->lastPage()])
         </div>
     </div>
     <div class="col-sm-12 col-md-7 ">

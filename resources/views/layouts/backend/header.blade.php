@@ -53,7 +53,9 @@
                     <div class="p-2">
                         {{ Form::open(['url' => route('logout')]) }}
                         <button class="dropdown-item d-flex align-items-center justify-content-between" type="submit">
-                            <span class="fs-sm fw-medium">{{ trans('global.logout') }}</span>
+                            <span class="fs-sm fw-medium">@lang('global.logout')
+
+                            </span>
                         </button>
                         {{ Form::close() }}
                     </div>
