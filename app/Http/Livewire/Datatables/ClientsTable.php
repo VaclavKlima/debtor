@@ -18,6 +18,7 @@ class ClientsTable extends Component
     public function mount(): void
     {
         $this->roles = Role::pluck('name', 'id');
+
     }
 
     public function render(): View
@@ -35,5 +36,12 @@ class ClientsTable extends Component
             ->when(!empty($this->search['email'] ?? null), fn(Builder $builder) => $builder->where('email', 'like', $this->search['email'].'%'))
             ->when(!empty($this->search['role_id'] ?? null), fn(Builder $builder) => $builder->whereRelation('roles', 'id', $this->search['role_id']))
             ->with('roles');
+    }
+
+    private function getSortable(string $sortBy = 'asc'): array
+    {
+        return [
+            'role_id' => static fn(Builder $builder) => $builder->orderBy('model_has_roles.model_type'),
+        ];
     }
 }

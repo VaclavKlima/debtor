@@ -2,10 +2,18 @@
     <table class="table table-bordered table-vcenter">
         <thead>
             <tr>
-                <th>@lang('validation.attributes.id')</th>
-                <th>@lang('validation.attributes.name')</th>
-                <th>@lang('validation.attributes.email')</th>
-                <th>@lang('usersManagement/roles.roles')</th>
+                <x-livewire.datatables.sorter column="id" :sort-by="$sortBy" :sort-column="$sortColumn">
+                    @lang('validation.attributes.id')
+                </x-livewire.datatables.sorter>
+                <x-livewire.datatables.sorter column="name" :sort-by="$sortBy" :sort-column="$sortColumn">
+                    @lang('validation.attributes.name')
+                </x-livewire.datatables.sorter>
+                <x-livewire.datatables.sorter column="email" :sort-by="$sortBy" :sort-column="$sortColumn">
+                    @lang('validation.attributes.email')
+                </x-livewire.datatables.sorter>
+                <th>
+                    @lang('usersManagement/roles.roles')
+                </th>
                 <th></th>
             </tr>
             <tr>

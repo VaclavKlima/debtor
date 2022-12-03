@@ -16,6 +16,8 @@ trait WithDataTablesTrait
     public array $getColumns = ['*'];
     public string $pageName = 'page';
     public array $search = [];
+    public string $sortColumn = 'id';
+    public string $sortBy = 'desc';
 
     public function mountWithDataTablesTrait(): void
     {
@@ -25,6 +27,7 @@ trait WithDataTablesTrait
     public function getRows(): LengthAwarePaginator
     {
         return $this->getRowsQuery()
+            ->orderBy($this->sortColumn, $this->sortBy)
             ->paginate(
                 perPage: $this->perPage,
                 columns: $this->getColumns,
@@ -37,4 +40,12 @@ trait WithDataTablesTrait
         Session::put('livewire.datatables.per_page', $value);
         $this->resetPage($this->pageName);
     }
+
+    public function sort(string $column, string $direction): void
+    {
+        $this->sortColumn = $column;
+        $this->sortBy = $direction;
+    }
+
+
 }
