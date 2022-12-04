@@ -38,7 +38,16 @@
                             </span>
                         @endforeach
                     </td>
-                    <td></td>
+                    <td>
+                        <div class="btn-group">
+                            @can('user_edit')
+                                <a class="btn btn-sm btn-alt-info" href="{{ route('users_management.users.edit', $user) }}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            @endcan
+                            <x-livewire.datatables.delete-button :model="$user"/>
+                        </div>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

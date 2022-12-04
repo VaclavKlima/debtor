@@ -11,4 +11,5 @@ return [
     'logout' => 'Log Out',
     'dashboard' => 'Dashboard',
     'page_of' => 'Page :current_page of :last_page',
+    'login' => 'Login',
 ];

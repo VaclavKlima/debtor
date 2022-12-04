@@ -1,7 +1,8 @@
 import {defineConfig, normalizePath} from 'vite';
 import laravel from 'laravel-vite-plugin';
+// @ts-ignore
 import path from 'node:path';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
+import {viteStaticCopy} from 'vite-plugin-static-copy';
 
 
 export default defineConfig({
@@ -15,7 +16,7 @@ export default defineConfig({
                 'resources/sass/oneui/themes/modern.scss',
                 'resources/sass/oneui/themes/smooth.scss',
                 'resources/js/oneui/app.js',
-                'resources/js/app.js',
+                'resources/js/app.ts',
                 'resources/js/pages/datatables.js',
                 'resources/js/pages/slick.js',
             ],

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Datatables;
 
+use App\Http\Livewire\WithToastNotificationsTrait;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,7 +12,7 @@ use Spatie\Permission\Models\Role;
 
 class ClientsTable extends Component
 {
-    use WithDataTablesTrait;
+    use WithDataTablesTrait, WithDeleteModelTrait, WithToastNotificationsTrait;
 
     public Collection $roles;
 

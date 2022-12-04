@@ -1,5 +1,5 @@
 @extends('layouts.auth')
-
+@section('title', trans('global.login'))
 @section('content')
     <div class="w-100">
         <div class="text-center mb-5">
@@ -8,13 +8,9 @@
             </p>
             <h1 class="fw-bold mb-2">
                 @lang('global.sign_in')
-
-
             </h1>
             <p class="fw-medium text-muted">
                 @lang('global.please_login')
-
-
             </p>
         </div>
         <div class="row g-0 justify-content-center">
@@ -30,15 +26,11 @@
                     <div>
                         <a class="text-muted fs-sm fw-medium d-block d-lg-inline-block mb-1" href="{{ route('password.request') }}">
                             @lang('global.forgot_password')
-
-
                         </a>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-lg btn-alt-primary">
                             <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> @lang('global.sign_in')
-
-
                         </button>
                     </div>
                 </div>
