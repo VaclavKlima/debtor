@@ -3,26 +3,24 @@
 namespace App\Http\Livewire\Datatables;
 
 
+use App\Http\Livewire\NotificationTypes;
 use Illuminate\Support\Facades\Auth;
 
 trait WithDeleteModelTrait
 {
     public function delete(int $id, string $class, ?string $permission): void
     {
-        $permission = 'asdsd';
         if (!empty($permission) && Auth::user()->cannot($permission)) {
-            $this->toast();
-
+            $this->toast(trans('global.you_dont_have_permission'), NotificationTypes::Danger);
             return;
         }
 
         if (class_exists($class)) {
-            dd($class::find($id));
             $class::find($id)->delete();
-
+            $this->toast(trans('global.model_deleted'), NotificationTypes::Success);
 
         } else {
-            dd($class);
+            $this->toast(trans('global.model_dont_exists'), NotificationTypes::Danger);
         }
     }
 }

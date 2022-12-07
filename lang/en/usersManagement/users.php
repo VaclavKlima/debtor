@@ -3,4 +3,5 @@
 return [
     'users_management' => 'Users management',
     'users' => 'Users',
+    'user' => 'User',
 ];

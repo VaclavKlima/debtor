@@ -12,4 +12,7 @@ return [
     'dashboard' => 'Dashboard',
     'page_of' => 'Page :current_page of :last_page',
     'login' => 'Login',
+    'you_dont_have_permission' => 'You do not have permissions to do this.',
+    'model_deleted' => ':Model was successfully deleted',
+    'model_dont_exists' => 'Model does not exist',
 ];
