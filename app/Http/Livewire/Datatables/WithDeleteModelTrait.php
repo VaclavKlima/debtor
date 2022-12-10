@@ -18,7 +18,6 @@ trait WithDeleteModelTrait
         if (class_exists($class)) {
             $class::find($id)->delete();
             $this->toast(trans('global.model_deleted'), NotificationTypes::Success);
-
         } else {
             $this->toast(trans('global.model_dont_exists'), NotificationTypes::Danger);
         }

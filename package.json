@@ -21,6 +21,7 @@
     "dependencies": {
         "@popperjs/core": "^2.11.6",
         "@types/node": "^18.11.10",
+        "alpinejs": "^3.10.5",
         "bootstrap": "^5.2.3",
         "esbuild": "^0.15.17",
         "simplebar": "^5.3.9",
