@@ -17,7 +17,6 @@ export default defineConfig({
                 'resources/sass/oneui/themes/smooth.scss',
                 'resources/js/oneui/app.js',
                 'resources/js/app.ts',
-                'resources/js/pages/datatables.js',
                 'resources/js/pages/slick.js',
             ],
             refresh: true,

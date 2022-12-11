@@ -3,30 +3,39 @@
 namespace App\Http\Controllers\UsersManagement;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
+use Spatie\Permission\Models\Role;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         Gate::authorize('user_index');
 
         return view('users-management.users.index');
     }
 
-    public function create()
+    public function create(): View
     {
         Gate::authorize('user_create');
 
+        return view('users-management.users.create', [
+            'roles' => Role::pluck('name', 'id'),
+        ]);
     }
 
-    public function store(Request $request)
+    public function store(UserStoreRequest $request): RedirectResponse
     {
-        Gate::authorize('user_create');
+        $user = User::create($request->validated());
+        $user->syncRoles($request->get('roles'));
 
-        $user = User::create($request->all());
+        return redirect()->route('users_management.users.index')
+            ->with('success', trans('usersManagement/users.created'));
     }
 
     public function show(User $user)
@@ -39,12 +48,19 @@ class UsersController extends Controller
     {
         Gate::authorize('user_edit');
 
+        return view('users-management.users.edit', [
+            'user' => $user->load('roles'),
+            'roles' => Role::pluck('name', 'id'),
+        ]);
     }
 
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        Gate::authorize('user_edit');
+        $user->update($request->validated());
+        $user->syncRoles($request->get('roles'));
 
+        return redirect()->route('users_management.users.index')
+            ->with('success', trans('usersManagement/users.updated'));
     }
 
     public function destroy(User $user)

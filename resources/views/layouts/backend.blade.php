@@ -24,6 +24,7 @@
     @yield('css')
     <!-- Css -->
     <link rel="stylesheet" href="{{ asset('js/plugins/sweetalert2/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/plugins/select2/css/select2.min.css') }}">
     @livewireStyles
     @vite(['resources/sass/main.scss', ])
     @yield('css_after')
@@ -50,6 +51,7 @@
 @livewireScripts
 <script src="{{ asset('js/lib/jquery.min.js') }}"></script>
 <script src="{{ asset('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('js/plugins/select2/js/select2.full.min.js') }}"></script>
 
 <script src="{{ asset('js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 @vite([ 'resources/js/oneui/app.js', 'resources/js/app.ts'])
