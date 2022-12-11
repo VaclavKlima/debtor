@@ -31,12 +31,16 @@ return new class extends Migration {
             'name' => 'user_delete',
         ]);
 
-        $admin->givePermissionTo(['user_show', 'user_create', 'user_index', 'user_delete']);
+        Permission::create([
+            'name' => 'user_edit',
+        ]);
+
+        $admin->givePermissionTo(['user_show', 'user_create', 'user_index', 'user_delete', 'user_edit']);
     }
 
     public function down(): void
     {
         Role::whereIn('name', ['admin', 'default'])->delete();
-        Permission::whereIn('name', ['user_show', 'user_create', 'user_index', 'user_delete'])->delete();
+        Permission::whereIn('name', ['user_show', 'user_create', 'user_index', 'user_delete', 'user_edit'])->delete();
     }
 };

@@ -22,9 +22,13 @@
 
     <!-- Modules -->
     @yield('css')
-    @vite(['resources/sass/main.scss', 'resources/js/oneui/app.js'])
+    <!-- Css -->
+    <link rel="stylesheet" href="{{ asset('js/plugins/sweetalert2/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/plugins/select2/css/select2.min.css') }}">
     @livewireStyles
-    @yield('js')
+    @vite(['resources/sass/main.scss', ])
+    @yield('css_after')
+
 </head>
 <body>
 <div id="page-container" class="sidebar-o remember-theme enable-page-overlay sidebar-dark side-scroll page-header-fixed main-content-narrow">
@@ -42,8 +46,16 @@
     @include('layouts.backend.footer')
 </div>
 
+<!-- Js -->
+@yield('js')
 @livewireScripts
-@yield('css_after')
+<script src="{{ asset('js/lib/jquery.min.js') }}"></script>
+<script src="{{ asset('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('js/plugins/select2/js/select2.full.min.js') }}"></script>
+
+<script src="{{ asset('js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+@vite([ 'resources/js/oneui/app.js', 'resources/js/app.ts'])
 @yield('js_after')
+
 </body>
 </html>

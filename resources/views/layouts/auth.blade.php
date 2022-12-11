@@ -39,7 +39,9 @@
                                 {{ config('app.name') }}
                             </a>
                             <p class="text-white-75 me-xl-8 mt-2">
-                                {{ trans('auth.descriptions', ['app_name' => config('app.name')]) }}
+                                @lang('auth.descriptions', ['app_name' => config('app.name')])
+
+
                             </p>
                         </div>
                     </div>
