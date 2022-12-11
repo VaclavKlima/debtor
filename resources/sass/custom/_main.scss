@@ -17,3 +17,14 @@ span.debtor-logo {
     height: 20px;
     width: 20px;
 }
+
+@each $name, $color in $theme-colors {
+    .hover-#{$name}:hover {
+        color: $color;
+        transition-duration: 250ms;
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}

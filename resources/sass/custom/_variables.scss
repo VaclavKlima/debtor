@@ -7,5 +7,14 @@
 // so you can override them because they all use !default
 // --------------------------------------------------
 
-// For example, changing the primary color
-// $primary: #a48ad4;
+// Colors
+$success: rgb(170, 226, 124);
+
+
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;

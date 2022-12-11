@@ -175,7 +175,8 @@ return [
         'password' => 'Password',
         'email' => 'Email',
         'password_confirmation' => 'Confirm password',
-
+        'id' => 'Id',
+        'name' => 'Name',
     ],
 
 ];

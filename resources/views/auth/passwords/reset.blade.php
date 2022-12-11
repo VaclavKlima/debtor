@@ -7,10 +7,14 @@
                 <img src="{{ asset('media/favicons/coin64x64.png') }}" alt="Debtor logo">
             </p>
             <h1 class="fw-bold mb-2">
-                {{ trans('global.password_reset') }}
+                @lang('global.password_reset')
+
+
             </h1>
             <p class="fw-medium text-muted">
-                {{ trans('auth.enter_email_to_reset_password') }}
+                @lang('auth.enter_email_to_reset_password')
+
+
             </p>
         </div>
         <div class="row g-0 justify-content-center">
@@ -30,7 +34,9 @@
 
                     <div>
                         <button type="submit" class="btn btn-lg btn-alt-primary">
-                            <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> {{ trans('global.save_password') }}
+                            <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> @lang('global.save_password')
+
+
                         </button>
                     </div>
                 </div>
