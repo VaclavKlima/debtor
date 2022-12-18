@@ -8,16 +8,13 @@
                 <x-livewire.datatables.sorter column="name" :sort-by="$sortBy" :sort-column="$sortColumn">
                     @lang('validation.attributes.name')
                 </x-livewire.datatables.sorter>
-                <x-livewire.datatables.sorter column="email" :sort-by="$sortBy" :sort-column="$sortColumn">
-                    @lang('validation.attributes.email')
-                </x-livewire.datatables.sorter>
                 <th>
-                    @lang('usersManagement/roles.roles')
+                    @lang('usersManagement/roles.permissions')
                 </th>
                 <th class="text-center">
-                    @can('user_create')
-                        <a class="btn btn-sm btn-alt-success" href="{{ route('users_management.users.create') }}">
-                            @lang('usersManagement/users.create')
+                    @can('role_create')
+                        <a class="btn btn-sm btn-alt-success" href="{{ route('users_management.roles.create') }}">
+                            @lang('usersManagement/roles.create')
                         </a>
                     @endcan
                 </th>
@@ -25,33 +22,31 @@
             <tr>
                 <x-livewire.datatables.search-columns.number wire:model.lazy="search.id" :placeholder="trans('validation.attributes.id')"/>
                 <x-livewire.datatables.search-columns.text wire:model.lazy="search.name" :placeholder="trans('validation.attributes.name')"/>
-                <x-livewire.datatables.search-columns.email wire:model.lazy="search.email" :placeholder="trans('validation.attributes.email')"/>
-                <x-livewire.datatables.search-columns.select wire:model.lazy="search.role_id" :options="$roles"/>
+                <x-livewire.datatables.search-columns.select wire:model.lazy="search.permission_id" :options="$permissions"/>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @php /** @var \App\Models\User $user */ @endphp
-            @foreach($users as $user)
+            @php /** @var \Spatie\Permission\Models\Role $role  */ @endphp
+            @foreach($roles as $role)
                 <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
+                    <td>{{ $role->id }}</td>
+                    <td>{{ $role->name }}</td>
                     <td>
-                        @foreach($user->roles as $role)
-                            <span class="badge bg-primary">
-                                {{ $role->name }}
+                        @foreach($role->permissions as $permission)
+                            <span @class([ $permission->id === (int) ($this->search['permission_id'] ?? null) ? 'bg-success' : 'bg-primary','badge'])>
+                                {{ $permission->name }}
                             </span>
                         @endforeach
                     </td>
                     <td class="text-center">
                         <div class="btn-group">
                             @can('user_edit')
-                                <a class="btn btn-sm btn-alt-info" href="{{ route('users_management.users.edit', $user) }}">
+                                <a class="btn btn-sm btn-alt-info" href="{{ route('users_management.roles.edit', $role) }}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             @endcan
-                            <x-livewire.datatables.delete-button :model="$user" permission="user_delete"/>
+                            <x-livewire.datatables.delete-button :model="$role" permission="role_delete"/>
                         </div>
                     </td>
                 </tr>
@@ -59,5 +54,5 @@
         </tbody>
     </table>
 
-    <x-livewire.datatables.pagination-links :collection="$users"/>
+    <x-livewire.datatables.pagination-links :collection="$roles"/>
 </div>

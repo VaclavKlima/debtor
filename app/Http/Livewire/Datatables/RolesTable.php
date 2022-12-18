@@ -3,38 +3,37 @@
 namespace App\Http\Livewire\Datatables;
 
 use App\Http\Livewire\WithToastNotificationsTrait;
-use App\Models\User;
+use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Livewire\Component;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class ClientsTable extends Component
+class RolesTable extends Component
 {
     use WithDataTablesTrait, WithDeleteModelTrait, WithToastNotificationsTrait;
 
-    public Collection $roles;
+    public Collection $permissions;
 
     public function mount(): void
     {
-        $this->roles = Role::pluck('name', 'id');
+        $this->permissions = Permission::pluck('name', 'id');
     }
 
     public function render(): View
     {
-        return view('livewire.datatables.clients-table', [
-            'users' => $this->getRows(),
+        return view('livewire.datatables.roles-table', [
+            'roles' => $this->getRows(),
         ]);
     }
 
     public function getRowsQuery(): Builder
     {
-        return User::query()
+        return Role::query()
             ->when(!empty($this->search['id'] ?? null), fn(Builder $builder) => $builder->where('id', $this->search['id']))
             ->when(!empty($this->search['name'] ?? null), fn(Builder $builder) => $builder->where('name', 'like', $this->search['name'].'%'))
-            ->when(!empty($this->search['email'] ?? null), fn(Builder $builder) => $builder->where('email', 'like', $this->search['email'].'%'))
-            ->when(!empty($this->search['role_id'] ?? null), fn(Builder $builder) => $builder->whereRelation('roles', 'id', $this->search['role_id']))
-            ->with('roles');
+            ->when(!empty($this->search['permission_id'] ?? null), fn(Builder $builder) => $builder->whereRelation('permissions', 'id', $this->search['permission_id']))
+            ->with('permissions');
     }
 }
