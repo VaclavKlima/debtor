@@ -51,12 +51,12 @@
                                                       :is-active="request()->is('users-management*')" icon="fas fa-users-cog">
 
                     <x-layouts.backend.sidebar-link :title="trans('usersManagement/users.users')" icon="fa-solid fa-users"
-                                                    :is-active="request()->is('users*')"
+                                                    :is-active="request()->is('users-management/users')"
                                                     :url="route('users_management.users.index')" permission="user_index"/>
 
                     <x-layouts.backend.sidebar-link :title="trans('usersManagement/roles.roles')" icon="fa-solid fa-user-tag"
-                                                    :is-active="request()->is('roles*')"
-                                                    :url="route('users_management.roles.index')"/>
+                                                    :is-active="request()->is('users-management/roles*')"
+                                                    :url="route('users_management.roles.index')" permission="role_index"/>
 
                 </x-layouts.backend.sidebar-link-group>
 

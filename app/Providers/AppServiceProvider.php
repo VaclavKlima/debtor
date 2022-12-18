@@ -30,5 +30,6 @@ class AppServiceProvider extends ServiceProvider
         Form::component('bsMultipleSelect', 'components.form.multiple-select', ['name', 'title' => null, 'selected' => [], 'options' => [], 'attributes' => []]);
         Form::component('bsSelect', 'components.form.select', ['name', 'title' => null, 'selected' => null, 'options' => [], 'attributes' => []]);
         Form::component('bsSave', 'components.form.save', ['title' => null, 'attributes' => []]);
+        Form::component('bsCheckbox', 'components.form.checkbox', ['name', 'title' => null, 'value' => null, 'checked' => null, 'attributes' => []]);
     }
 }

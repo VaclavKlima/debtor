@@ -7,6 +7,8 @@
         <x-layouts.backend.breadcrumb :title="trans('usersManagement/users.users')" :is-active="true"/>
     </x-layouts.backend.hero>
 
+    <x-layouts.backend.status-messages/>
+
     <div class="content">
         <div class="block block-rounded">
             <div class="block-content block-content-full">
