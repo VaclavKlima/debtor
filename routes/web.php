@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\UsersManagement\RolesController;
 use App\Http\Controllers\UsersManagement\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-    Route::name('users_management.')->prefix('users-management')->group(function () {
+    Route::get('/user-profile', [UserProfileController::class, 'edit'])->name('user-profile.edit');
+    Route::put('/user-profile', [UserProfileController::class, 'update'])->name('user-profile.update');
+
+    Route::name('users-management.')->prefix('users-management')->group(function () {
 
         Route::resource('users', UsersController::class);
         Route::resource('roles', RolesController::class);

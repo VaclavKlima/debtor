@@ -177,6 +177,7 @@ return [
         'password_confirmation' => 'Confirm password',
         'id' => 'Id',
         'name' => 'Name',
+        'profile_image' => 'Profile image',
     ],
 
 ];

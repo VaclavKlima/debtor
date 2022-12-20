@@ -13,7 +13,7 @@
                 </th>
                 <th class="text-center">
                     @can('role_create')
-                        <a class="btn btn-sm btn-alt-success" href="{{ route('users_management.roles.create') }}">
+                        <a class="btn btn-sm btn-alt-success" href="{{ route('users-management.roles.create') }}">
                             @lang('usersManagement/roles.create')
                         </a>
                     @endcan
@@ -42,7 +42,7 @@
                     <td class="text-center">
                         <div class="btn-group">
                             @can('user_edit')
-                                <a class="btn btn-sm btn-alt-info" href="{{ route('users_management.roles.edit', $role) }}">
+                                <a class="btn btn-sm btn-alt-info" href="{{ route('users-management.roles.edit', $role) }}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             @endcan
