@@ -16,7 +16,7 @@
                 </th>
                 <th class="text-center">
                     @can('user_create')
-                        <a class="btn btn-sm btn-alt-success" href="{{ route('users_management.users.create') }}">
+                        <a class="btn btn-sm btn-alt-success" href="{{ route('users-management.users.create') }}">
                             @lang('usersManagement/users.create')
                         </a>
                     @endcan
@@ -47,7 +47,7 @@
                     <td class="text-center">
                         <div class="btn-group">
                             @can('user_edit')
-                                <a class="btn btn-sm btn-alt-info" href="{{ route('users_management.users.edit', $user) }}">
+                                <a class="btn btn-sm btn-alt-info" href="{{ route('users-management.users.edit', $user) }}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             @endcan

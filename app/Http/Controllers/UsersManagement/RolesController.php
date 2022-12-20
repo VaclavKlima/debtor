@@ -36,7 +36,7 @@ class RolesController extends Controller
         $role->syncPermissions($request->get('permissions'));
 
 
-        return redirect()->route('users_management.roles.index')
+        return redirect()->route('users-management.roles.index')
             ->with('success', trans('usersManagement/roles.created'));
 
     }
@@ -56,7 +56,7 @@ class RolesController extends Controller
 
         $role->syncPermissions($request->get('permissions'));
 
-        return redirect()->route('users_management.roles.index')
+        return redirect()->route('users-management.roles.index')
             ->with('success', trans('usersManagement/roles.updated'));
     }
 }

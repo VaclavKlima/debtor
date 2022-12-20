@@ -34,7 +34,7 @@ class UsersController extends Controller
         $user = User::create($request->validated());
         $user->syncRoles($request->get('roles'));
 
-        return redirect()->route('users_management.users.index')
+        return redirect()->route('users-management.users.index')
             ->with('success', trans('usersManagement/users.created'));
     }
 
@@ -59,7 +59,7 @@ class UsersController extends Controller
         $user->update($request->validated());
         $user->syncRoles($request->get('roles'));
 
-        return redirect()->route('users_management.users.index')
+        return redirect()->route('users-management.users.index')
             ->with('success', trans('usersManagement/users.updated'));
     }
 

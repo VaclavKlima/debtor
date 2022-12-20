@@ -12,7 +12,7 @@
     <div class="content">
         <div class="block block-rounded">
             <div class="block-content block-content-full">
-                {{ Form::open(['url' => route('users_management.roles.store')]) }}
+                {{ Form::open(['url' => route('users-management.roles.store')]) }}
                 <div class="row">
                     <div class="col-md-3">
                         {{ Form::bsText('name', trans('validation.attributes.name')) }}
