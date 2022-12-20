@@ -19,4 +19,6 @@ return [
     'choose_one' => 'Choose one...',
     'choose_multiple' => 'Choose multiple...',
     'save' => 'Save',
+    'profile' => 'Profile',
+    'user_profile_updated' => 'User profile updated successfully.',
 ];

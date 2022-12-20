@@ -25,36 +25,28 @@
             <!-- User Dropdown -->
             <div class="dropdown d-inline-block ms-2">
                 <button type="button" class="btn btn-sm btn-alt-secondary d-flex align-items-center" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle" src="{{ asset('media/avatars/avatar0.jpg') }}" alt="Header Avatar" style="width: 21px;">
+                    <img class="rounded-circle" src="{{ auth()->user()->profile_image_url }}" alt="Header Avatar" style="width: 21px;">
                     <span class="d-none d-sm-inline-block ms-2">{{ Auth::user()->name }}</span>
                     <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block ms-1 mt-1"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0" aria-labelledby="page-header-user-dropdown">
                     <div class="p-3 text-center bg-body-light border-bottom rounded-top">
-                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('media/avatars/avatar0.jpg') }}" alt="">
+                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ auth()->user()->profile_image_url }}" alt="">
                         <p class="mt-2 mb-0 fw-medium">{{ Auth::user()->name }}</p>
 
                         <p class="mb-0 text-muted fs-sm fw-medium">Web Developer</p>
                     </div>
                     <div class="p-2">
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                            <span class="fs-sm fw-medium">Inbox</span>
-                            <span class="badge rounded-pill bg-primary ms-2">3</span>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                            <span class="fs-sm fw-medium">Profile</span>
-                            <span class="badge rounded-pill bg-primary ms-2">1</span>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                            <span class="fs-sm fw-medium">Settings</span>
+                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('user-profile.edit') }}">
+                            <span class="fs-sm fw-medium">@lang('global.profile')</span>
                         </a>
                     </div>
                     <div role="separator" class="dropdown-divider m-0"></div>
                     <div class="p-2">
                         {{ Form::open(['url' => route('logout')]) }}
                         <button class="dropdown-item d-flex align-items-center justify-content-between" type="submit">
-                            <span class="fs-sm fw-medium">@lang('global.logout')
-
+                            <span class="fs-sm fw-medium">
+                                @lang('global.logout')
                             </span>
                         </button>
                         {{ Form::close() }}

@@ -4,7 +4,7 @@
 @section('content')
     <x-layouts.backend.hero :title="'<i class=\'fas fa-user-tag\'></i> ' . trans('usersManagement/roles.edit')">
         <x-layouts.backend.breadcrumb :title="trans('usersManagement/users.users_management')"/>
-        <x-layouts.backend.breadcrumb :title="trans('usersManagement/roles.roles')" :url="route('users_management.roles.index')"/>
+        <x-layouts.backend.breadcrumb :title="trans('usersManagement/roles.roles')" :url="route('users-management.roles.index')"/>
         <x-layouts.backend.breadcrumb :title="trans('usersManagement/roles.edit')" :is-active="true"/>
     </x-layouts.backend.hero>
 
@@ -12,7 +12,7 @@
     <div class="content">
         <div class="block block-rounded">
             <div class="block-content block-content-full">
-                {{ Form::model($role,['url' => route('users_management.roles.update', $role), 'method' => 'put']) }}
+                {{ Form::model($role,['url' => route('users-management.roles.update', $role), 'method' => 'put']) }}
                 <div class="row">
                     <div class="col-md-3">
                         {{ Form::bsText('name', trans('validation.attributes.name')) }}
