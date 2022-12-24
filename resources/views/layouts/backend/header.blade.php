@@ -43,13 +43,11 @@
                     </div>
                     <div role="separator" class="dropdown-divider m-0"></div>
                     <div class="p-2">
-                        {{ Form::open(['url' => route('logout')]) }}
-                        <button class="dropdown-item d-flex align-items-center justify-content-between" type="submit">
-                            <span class="fs-sm fw-medium">
-                                @lang('global.logout')
-                            </span>
-                        </button>
-                        {{ Form::close() }}
+                        <x-form.open :action="route('logout')">
+                            <x-form.save class="dropdown-item d-flex align-items-center justify-content-between w-100" type="submit">
+                                <span class="fs-sm fw-medium">@lang('global.logout')</span>
+                            </x-form.save>
+                        </x-form.open>
                     </div>
                 </div>
             </div>

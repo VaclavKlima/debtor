@@ -20,28 +20,23 @@
         </div>
         <div class="row g-0 justify-content-center">
             <div class="col-sm-8 col-xl-4">
-                {{ Form::open(['url' => route('password.email')]) }}
-                <div class="mb-4">
-                    {{ Form::bsEmail('email', null, null, ['class' => 'form-control-lg form-control-alt py-3', 'placeholder' => trans('validation.attributes.email')]) }}
-                </div>
-
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                        <a class="text-muted fs-sm fw-medium d-block d-lg-inline-block mb-1" href="{{ route('login') }}">
-                            @lang('global.back_to_login')
-
-
-                        </a>
+                <x-form.open :action="route('password.email')">
+                    <div class="mb-4">
+                        <x-form.email name="email" class="form-control-lg form-control-alt py-3" :placeholder="trans('validation.attributes.email')"/>
                     </div>
-                    <div>
-                        <button type="submit" class="btn btn-lg btn-alt-primary">
-                            <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> @lang('auth.send_password_reset_link')
-
-
-                        </button>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <a class="text-muted fs-sm fw-medium d-block d-lg-inline-block mb-1" href="{{ route('login') }}">
+                                @lang('global.back_to_login')
+                            </a>
+                        </div>
+                        <div>
+                            <x-form.save class="btn btn-lg btn-alt-primary">
+                                <i class="fa fa-fw fa-sign-in-alt me-1  opacity-50"></i> @lang('auth.send_password_reset_link')
+                            </x-form.save>
+                        </div>
                     </div>
-                </div>
-                {{ Form::close() }}
+                </x-form.open>
             </div>
         </div>
     </div>
