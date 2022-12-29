@@ -1,4 +1,5 @@
 <div class="form-group">
-    {!! Form::button($title ??( "<i class=\"fas fa-save\"></i> " . trans('global.save')), array_merge_recursive($attributes, ['class' => 'btn btn-success mt-3', 'type' => 'submit' ])) !!}
+    <button {{ $attributes->except(['class']) }} class="{{ $attributes->get('class', 'btn btn-success mt-3')}}" type="submit">
+        {!! $slot->isNotEmpty() ? $slot : '<i class="fas fa-save"></i> ' . trans('global.save') !!}
+    </button>
 </div>
-

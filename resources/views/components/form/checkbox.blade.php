@@ -1,11 +1,8 @@
+@aware(['model'])
 <div class="form-check">
-    {{ Form::checkbox($name, $value, $checked ,array_merge_recursive($attributes, ['class' => 'form-check-input' . ($errors->has($name) ? 'is-invalid' : ''), 'id' => $name])) }}
+    <input id="{{ $name }}" name="{{ $name }}" value="{{ $value }}" type="checkbox" @checked(old( $name ,  $checked ?? $model?->{$name} )) {{ $attributes->merge(['class' => $errors->has($name) ? 'form-check-input is-invalid' : 'form-check-input']) }}>
     @isset($title)
-        {{ Form::label($name, $title, ['class' => 'form-check-label']) }}
+        <x-form.label class="form-check-label" :for="$name" :title="$title"/>
     @endisset
-    @error($name)
-    <div class="invalid-feedback animated fadeIn">
-        {{ $message }}
-    </div>
-    @enderror
+    <x-form.error :name="$name"/>
 </div>
