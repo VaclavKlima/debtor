@@ -11,24 +11,24 @@
     <div class="content">
         <div class="block block-rounded">
             <div class="block-content block-content-full">
-                {{ Form::open(['url' => route('users-management.users.store')]) }}
-                <div class="row">
-                    <div class="col-md-3">
-                        {{ Form::bsText('name', trans('validation.attributes.name')) }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ Form::bsEmail('email', trans('validation.attributes.email')) }}
-                    </div>
+                <x-form.open :action="route('users-management.users.store')">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <x-form.text name="name" :title="trans('validation.attributes.name')"/>
+                        </div>
+                        <div class="col-md-3">
+                            <x-form.email name="email" :title="trans('validation.attributes.email')"/>
+                        </div>
 
-                    <div class="col-md-3">
-                        {{ Form::bsMultipleSelect('roles[]', trans('usersManagement/roles.roles'), $roles) }}
-                    </div>
+                        <div class="col-md-3">
+                            <x-form.search-select-multiple name="roles[]" :title="trans('usersManagement/roles.roles')" :options="$roles"/>
+                        </div>
 
-                    <div class="col-md-12 text-end">
-                        {!! Form::bsSave() !!}
+                        <div class="col-md-12 text-end">
+                            <x-form.save/>
+                        </div>
                     </div>
-                </div>
-                {{ Form::close() }}
+                </x-form.open>
             </div>
         </div>
     </div>

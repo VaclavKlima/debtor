@@ -7,8 +7,12 @@ use Illuminate\View\Component;
 
 class Text extends Component
 {
-    public function __construct(public string $name, public ?string $title = null, public ?string $value = null)
-    {
+    public function __construct(
+        public string $name,
+        public ?string $title = null,
+        public ?string $value = null
+    ) {
+        //
     }
 
     public function render(): View

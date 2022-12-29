@@ -7,8 +7,11 @@ use Illuminate\View\Component;
 
 class Open extends Component
 {
-    public function __construct(public string $action, public string $method = 'POST')
-    {
+    public function __construct(
+        public string $action,
+        public string $method = 'POST'
+    ) {
+        //
     }
 
     public function render(): View

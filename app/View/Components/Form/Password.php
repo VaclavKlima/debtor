@@ -7,8 +7,11 @@ use Illuminate\View\Component;
 
 class Password extends Component
 {
-    public function __construct(public string $name, public ?string $title = null)
-    {
+    public function __construct(
+        public string $name,
+        public ?string $title = null
+    ) {
+        //
     }
 
     public function render(): View

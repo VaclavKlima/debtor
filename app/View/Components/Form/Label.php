@@ -7,8 +7,11 @@ use Illuminate\View\Component;
 
 class Label extends Component
 {
-    public function __construct(public string $for, public string $title)
-    {
+    public function __construct(
+        public string $for,
+        public string $title
+    ) {
+        //
     }
 
     public function render(): View

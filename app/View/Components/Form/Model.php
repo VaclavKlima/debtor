@@ -7,8 +7,12 @@ use Illuminate\View\Component;
 
 class Model extends Component
 {
-    public function __construct(public $model, public string $action, public string $method = 'PUT')
-    {
+    public function __construct(
+        public $model,
+        public string $action,
+        public string $method = 'PUT'
+    ) {
+        //
     }
 
     public function render(): View

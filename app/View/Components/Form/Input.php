@@ -7,8 +7,13 @@ use Illuminate\View\Component;
 
 class Input extends Component
 {
-    public function __construct(public string $name, public string $type, public ?string $title = null, public ?string $value = null)
-    {
+    public function __construct(
+        public string $name,
+        public string $type,
+        public ?string $title = null,
+        public ?string $value = null
+    ) {
+        //
     }
 
     public function render(): View
