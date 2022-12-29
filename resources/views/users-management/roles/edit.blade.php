@@ -12,25 +12,25 @@
     <div class="content">
         <div class="block block-rounded">
             <div class="block-content block-content-full">
-                {{ Form::model($role,['url' => route('users-management.roles.update', $role), 'method' => 'put']) }}
-                <div class="row">
-                    <div class="col-md-3">
-                        {{ Form::bsText('name', trans('validation.attributes.name')) }}
-                    </div>
-
-                    <div class="col-md-12">
-                        <hr>
-                    </div>
-                    @foreach($permissions as $id => $name)
+                <x-form.model :model="$role" :action="route('users-management.roles.update', $role)">
+                    <div class="row">
                         <div class="col-md-3">
-                            {{ Form::bsCheckbox("permissions[{$id}]", $name, $id, $role->permissions->find($id)) }}
+                            <x-form.text name="name" :title="trans('validation.attributes.name')"/>
                         </div>
-                    @endforeach
-                    <div class="col-md-12 text-end">
-                        {!! Form::bsSave() !!}
+
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
+                        @foreach($permissions as $id => $name)
+                            <div class="col-md-3">
+                                <x-form.checkbox name="permissions[]" :value="$id" :title="$name" :checked="$role->permissions->find($id) !== null"/>
+                            </div>
+                        @endforeach
+                        <div class="col-md-12 text-end">
+                            <x-form.save/>
+                        </div>
                     </div>
-                </div>
-                {{ Form::close() }}
+                </x-form.model>
             </div>
         </div>
     </div>

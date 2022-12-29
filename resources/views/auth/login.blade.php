@@ -15,26 +15,26 @@
         </div>
         <div class="row g-0 justify-content-center">
             <div class="col-sm-8 col-xl-4">
-                {{ Form::open(['url' => route('login')]) }}
-                <div class="mb-4">
-                    {{ Form::bsEmail('email', null, null, ['class' => 'form-control-lg form-control-alt py-3', 'placeholder' => trans('validation.attributes.email')]) }}
-                </div>
-                <div class="mb-4">
-                    {{ Form::bsPassword('password', null,  ['class' => 'form-control-lg form-control-alt py-3', 'placeholder' => trans('validation.attributes.password')]) }}
-                </div>
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                        <a class="text-muted fs-sm fw-medium d-block d-lg-inline-block mb-1" href="{{ route('password.request') }}">
-                            @lang('global.forgot_password')
-                        </a>
+                <x-form.open :action="route('login')">
+                    <div class="mb-4">
+                        <x-form.email name="email" class="form-control-lg form-control-alt py-3" :placeholder="trans('validation.attributes.email')"/>
                     </div>
-                    <div>
-                        <button type="submit" class="btn btn-lg btn-alt-primary">
-                            <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> @lang('global.sign_in')
-                        </button>
+                    <div class="mb-4">
+                        <x-form.password name="password" class="form-control-lg form-control-alt py-3" :placeholder=" trans('validation.attributes.password')"/>
                     </div>
-                </div>
-                {{ Form::close() }}
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <a class="text-muted fs-sm fw-medium d-block d-lg-inline-block mb-1" href="{{ route('password.request') }}">
+                                @lang('global.forgot_password')
+                            </a>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-lg btn-alt-primary">
+                                <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50"></i> @lang('global.sign_in')
+                            </button>
+                        </div>
+                    </div>
+                </x-form.open>
             </div>
         </div>
     </div>
