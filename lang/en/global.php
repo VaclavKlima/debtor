@@ -21,4 +21,5 @@ return [
     'save' => 'Save',
     'profile' => 'Profile',
     'user_profile_updated' => 'User profile updated successfully.',
+    'administration' => 'Administration',
 ];

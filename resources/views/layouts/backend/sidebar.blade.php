@@ -44,8 +44,13 @@
                 <x-layouts.backend.sidebar-link title="Dashboard" icon="si si-cursor"
                                                 :is-active="request()->is('dashboard*')"
                                                 :url="route('home.index')"/>
+
+                <x-layouts.backend.sidebar-link :title="trans('orders.my_orders')" icon="si si-bag"
+                                                :is-active="request()->is('orders*')"
+                                                :url="route('orders.index')"/>
+
                 @role('admin')
-                <li class="nav-main-heading">Administration</li>
+                <li class="nav-main-heading">@lang('global.administration')</li>
 
                 <x-layouts.backend.sidebar-link-group :title="trans('usersManagement/users.users_management')"
                                                       :is-active="request()->is('users-management*')" icon="fas fa-users-cog">
@@ -59,7 +64,6 @@
                                                     :url="route('users-management.roles.index')" permission="role_index"/>
 
                 </x-layouts.backend.sidebar-link-group>
-
                 @endrole
             </ul>
         </div>

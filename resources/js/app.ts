@@ -1,6 +1,7 @@
 import './bootstrap';
 import Alpine from 'alpinejs'
 import livewireDeleteButton from './typescript/alpinejs/LivewireDeleteButton';
+import orderForm from "./typescript/alpinejs/OrderForm";
 
 declare global {
     interface Window {
@@ -12,12 +13,18 @@ declare global {
     interface Event {
         detail: any;
     }
+
+    interface EventTarget {
+        value: any;
+        files: any[];
+    }
 }
 
 
 window.Alpine = Alpine
 
 Alpine.data('livewireDeleteButton', livewireDeleteButton)
+Alpine.data('orderForm', orderForm)
 Alpine.start()
 
 interface toastDetail {

@@ -2,6 +2,10 @@
     "compilerOptions": {
         "types": [
             "jquery"
-        ]
-    }
+        ],
+        "target": "es5"
+    },
+    "include": [
+        "*.ts"
+    ]
 }

@@ -178,6 +178,9 @@ return [
         'id' => 'Id',
         'name' => 'Name',
         'profile_image' => 'Profile image',
+        'title' => 'Title',
+        'price' => 'Price',
+        'quantity' => 'Quantity',
     ],
 
 ];

@@ -70,7 +70,9 @@
                                     <i class="fa fa-fw fa-check-circle text-success"></i>
                                 </div>
                                 <div class="flex-grow-1 pe-2">
-                                    <div class="fw-semibold">You have a new follower</div>
+                                    <div class="fw-semibold">You have a new follower
+                                        <button>click here</button>
+                                    </div>
                                     <span class="fw-medium text-muted">15 min ago</span>
                                 </div>
                             </a>
