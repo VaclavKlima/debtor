@@ -1,6 +1,14 @@
 import {OrderForm, OrderItem} from "../objects/OrderForm";
 import axios from "axios";
 
+let laravel_api_token = $('meta[name="api-token"]').attr('content');
+;
+
+axios.defaults.headers.common = {
+    'Authorization': `Bearer ${laravel_api_token}`,
+    'X-Requested-With': 'XMLHttpRequest'
+};
+
 export default (): OrderForm => ({
     order: {
         title: '',
@@ -24,7 +32,11 @@ export default (): OrderForm => ({
             this.order.owner_id = e.target.value
         })
 
-        if (this.order.order_items.length === 0) {
+        this.order.id = Number($(this.$root).attr('data-order-id')) || null;
+
+        if (this.order.id) {
+            this.getOrder()
+        } else if (this.order.order_items.length === 0) {
             this.addOrderItem()
         }
     },
@@ -92,7 +104,7 @@ export default (): OrderForm => ({
         })
     },
     getOrder(): void {
-        axios.get('api/v1/orders/' + this.order.id).then(response => {
+        axios.get('/api/v1/orders/' + this.order.id).then(response => {
             console.log(response)
         })
     }

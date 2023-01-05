@@ -16,7 +16,12 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasPermissions, InteractsWithMedia;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
+    use HasRoles;
+    use HasPermissions;
+    use InteractsWithMedia;
 
     protected $fillable = [
         'name',

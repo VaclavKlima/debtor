@@ -7,4 +7,6 @@ return [
     'total_price' => 'Total Price',
     'save_order' => 'Save Order',
     'order_created' => 'Order created successfully',
+    'create_order' => 'Create Order',
+    'edit_order' => 'Edit Order',
 ];

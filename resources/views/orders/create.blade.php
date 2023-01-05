@@ -3,7 +3,8 @@
 @section('title', trans('usersManagement/roles.roles'))
 @section('content')
     <x-layouts.backend.hero :title="'<i class=\'si si-bag\'></i> ' . trans('orders.my_orders')">
-        <x-layouts.backend.breadcrumb :title="trans('orders.my_orders')" :is-active="true"/>
+        <x-layouts.backend.breadcrumb :title="trans('orders.my_orders')" :url="route('orders.index')"/>
+        <x-layouts.backend.breadcrumb :title="trans('orders.my_orders')" :is-active="true" :title="trans('orders.create_order')"/>
     </x-layouts.backend.hero>
 
     <x-layouts.backend.status-messages/>

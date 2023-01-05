@@ -2,7 +2,7 @@
 'users' => [],
 'orderId' => null,
 ])
-<div class="row" x-data="orderForm" x-init="order.id = @js($orderId)">
+<div class="row" x-data="orderForm" data-order-id="{{ $orderId }}">
     <template x-for="validationError in validationErrors" :key="validationError">
         <div class="col-12">
             <div class="alert alert-danger alert-dismissible p-2" role="alert">
@@ -99,5 +99,6 @@
         <button type="button" class="btn btn-alt-success" x-on:click="saveOrder">
             <i class="fa fa-save"></i>
         @lang('orders.save_order')
+        </button>
     </div>
 </div>

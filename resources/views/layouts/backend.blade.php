@@ -10,6 +10,7 @@
     <meta name="description" content="@yield('description', trans('auth.descriptions', ['app_name' => config('app.name')]))">
     <meta name="author" content="Sorelio">
     <meta name="robots" content="noindex, nofollow">
+    <meta name="api-token" content="{{ Auth::user()->api_token }}">
 
     <!-- Icons -->
     <link rel="shortcut icon" href="{{ asset('media/favicons/coin512x512.png') }}">

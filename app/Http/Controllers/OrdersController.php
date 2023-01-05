@@ -47,6 +47,10 @@ class OrdersController extends Controller
 
     public function edit(Order $order)
     {
+        return view('orders.edit', [
+            'order' => $order,
+            'users' => User::pluck('name', 'id'),
+        ]);
     }
 
     public function update(Request $request, Order $order)
