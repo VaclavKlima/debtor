@@ -1,37 +1,23 @@
-import {OrderForm, OrderItem} from "../objects/OrderForm";
 import axios from "axios";
+import Order from "../objects/Order";
+import OrderItem, {OrderItemInterface} from "../objects/OrderItem";
 
 let laravel_api_token = $('meta[name="api-token"]').attr('content');
-;
 
 axios.defaults.headers.common = {
     'Authorization': `Bearer ${laravel_api_token}`,
     'X-Requested-With': 'XMLHttpRequest'
 };
 
-export default (): OrderForm => ({
-    order: {
+export default () => ({
+    order: new Order({
         title: '',
         order_items: [],
         owner_id: null,
-        get total_price(): string {
-            return this.order_items.reduce((total: number, orderItem) => total + Number(orderItem.total_price), 0).toFixed(2);
-        },
-        set total_price(value) {
-            let orderItemsQuantity = this.order_items.reduce((total: number, orderItem) => total + Number(orderItem.quantity), 0);
-            let pricePerQuantity = Number(value) / orderItemsQuantity;
-
-            this.order_items.forEach((orderItem: OrderItem) => {
-                orderItem.price = Number(pricePerQuantity.toFixed(2));
-            })
-        }
-    },
+        image_url: ''
+    }),
     validationErrors: [],
     init(): void {
-        $('#user_id').on('change.select2', (e): void => {
-            this.order.owner_id = e.target.value
-        })
-
         this.order.id = Number($(this.$root).attr('data-order-id')) || null;
 
         if (this.order.id) {
@@ -40,24 +26,12 @@ export default (): OrderForm => ({
             this.addOrderItem()
         }
     },
-    addOrderItem(): void {
-        this.order.order_items.push({
-            id: null,
-            order_id: null,
-            user_id: null,
-            name: '',
-            quantity: 1,
-            price: 10,
-            created_at: null,
-            updated_at: null,
-            user: null,
-            get total_price() {
-                return (this.quantity * this.price).toFixed(2)
-            },
-            set total_price(value: any) {
-                this.price = (value / this.quantity).toFixed(2)
-            }
-        })
+    addOrderItem(data: OrderItemInterface = {
+        name: '',
+        quantity: 1,
+        price: 10,
+    }): void {
+        this.order.order_items.push(new OrderItem(data))
     },
     removeOrderItem(orderItem: OrderItem): void {
         this.order.order_items = this.order.order_items.filter(item => item !== orderItem)
@@ -105,7 +79,17 @@ export default (): OrderForm => ({
     },
     getOrder(): void {
         axios.get('/api/v1/orders/' + this.order.id).then(response => {
-            console.log(response)
+            let orderData = response.data.data
+
+            for (let key in orderData) {
+                if (orderData.hasOwnProperty(key) && key !== 'order_items') {
+                    this.order[key] = orderData[key]
+                } else {
+                    orderData[key].forEach((orderItem: OrderItem) => {
+                        this.addOrderItem(orderItem)
+                    })
+                }
+            }
         })
     }
 })

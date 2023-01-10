@@ -13,7 +13,7 @@
         <div class="block block-rounded">
             <div class="block-content block-content-full">
 
-                <livewire:datatables.clients-table/>
+                <livewire:datatables.users-table/>
 
             </div>
         </div>

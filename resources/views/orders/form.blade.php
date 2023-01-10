@@ -18,7 +18,7 @@
                 <x-form.text name="title" :title="trans('validation.attributes.title')" x-model="order.title"/>
             </div>
             <div class="col-md-6">
-                <x-form.search-select name="user_id" :title="trans('orders.order_owner')" :options="$users"/>
+                <x-form.select name="owner_id" :title="trans('orders.order_owner')" :options="$users" x-model="order.owner_id"/>
             </div>
 
         </div>
@@ -98,7 +98,7 @@
     <div class="col-md-12 text-end">
         <button type="button" class="btn btn-alt-success" x-on:click="saveOrder">
             <i class="fa fa-save"></i>
-        @lang('orders.save_order')
+            @lang('orders.save_order')
         </button>
     </div>
 </div>

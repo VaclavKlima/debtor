@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Services\IbanService;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -24,9 +25,11 @@ class User extends Authenticatable implements HasMedia
     use InteractsWithMedia;
 
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'bank_account_number',
     ];
 
     protected $hidden = [
@@ -38,6 +41,24 @@ class User extends Authenticatable implements HasMedia
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Relations
+     */
+
+    /**
+     * Attributes
+     */
+    public function fullName(): Attribute
+    {
+        return Attribute::make(
+            get: fn(): string => "{$this->first_name} {$this->last_name}",
+            set: fn(string $value): array => [
+                $this->first_name = explode(' ', $value, 2)[0],
+                $this->last_name = explode(' ', $value, 2)[1] ?? null,
+            ],
+        );
+    }
+
     public function profileImageUrl(): Attribute
     {
         $media = $this->getFirstMedia('profile_image');
@@ -47,6 +68,16 @@ class User extends Authenticatable implements HasMedia
         );
     }
 
+    public function iban(): Attribute
+    {
+        return Attribute::make(
+            get: fn(): string => (new IbanService($this->bank_account_number))->getIban(),
+        );
+    }
+
+    /**
+     * Register media collections
+     */
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('user_image')

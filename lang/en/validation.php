@@ -158,6 +158,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'bank_account_number' => [
+            'invalid_bank_account_number' => 'The bank account number is invalid.',
+        ],
     ],
 
     /*
@@ -181,6 +184,10 @@ return [
         'title' => 'Title',
         'price' => 'Price',
         'quantity' => 'Quantity',
+        'first_name' => 'First name',
+        'last_name' => 'Last name',
+        'bank_account_number' => 'Bank account number',
+        'full_name' => 'Full name',
     ],
 
 ];

@@ -16,13 +16,19 @@
                 <x-form.model :action="route('user-profile.update')" :model="$user" files method="PUT">
                     <div class="row">
                         <div class="col-md-3">
-                            <x-form.text name="name" :title="trans('validation.attributes.name')"/>
+                            <x-form.text name="first_name" :title="trans('validation.attributes.first_name')"/>
+                        </div>
+                        <div class="col-md-3">
+                            <x-form.text name="last_name" :title="trans('validation.attributes.last_name')"/>
                         </div>
                         <div class="col-md-3">
                             <x-form.email name="email" :title="trans('validation.attributes.email')"/>
                         </div>
                         <div class="col-md-3">
                             <x-form.file name="profile_image" :title="trans('validation.attributes.profile_image')"/>
+                        </div>
+                        <div class="col-md-3">
+                            <x-form.text name="bank_account_number" :title="trans('validation.attributes.bank_account_number')"/>
                         </div>
                         <div class="col-md-12 text-end">
                             <x-form.save/>
